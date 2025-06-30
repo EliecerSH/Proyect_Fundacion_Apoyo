@@ -1,0 +1,37 @@
+services:
+  mongo:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password123
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./central/backend
+    container_name: backend
+    ports:
+      - "3001:3001"
+    environment:
+      DB_URI: mongodb://root:password123@mongo:27017/fundacion-apoyo?authSource=admin
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./central/frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  admin:
+    build: ./central/servicio-web
+    ports:
+      - "4000:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:
