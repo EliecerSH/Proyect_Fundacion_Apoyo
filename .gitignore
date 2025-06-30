@@ -1,0 +1,40 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+log.txt
+
+# Environment files
+.env
+.env.local
+
+# Build output
+build/
+dist/
+
+# Docker
+docker-compose.override.yml
+Dockerfile.dev
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Nginx
+nginx.conf
+
+# Others
+coverage/
+*.tgz
+
+# TypeScript
+*.tsbuildinfo
